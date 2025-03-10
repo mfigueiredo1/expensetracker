@@ -1,7 +1,14 @@
+# Expense Tracker App
+#Written By: Michael Figueiredo
+#Date Created: 03/10/2025
+#Project: Expense Tracker App
+#Last Updated: 03/10/2025
+
 # App Design
 from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit, QComboBox, QDateEdit, QTableWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QTableWidgetItem, QHeaderView
 
 from PyQt6.QtCore import QDate, Qt
+#
 
 class ExpenseApp(QWidget):
     def _init_(self):
