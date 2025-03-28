@@ -37,6 +37,7 @@ class ExpenseApp(QWidget):
         self.table = QTableWidget(0, 5)
         self.table.setHorizontalHeaderLabels(["ID", "Date", "Category",
         "Amount", "Description"])
+
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.
         ResizeMode.Stretch)
 
@@ -67,8 +68,10 @@ class ExpenseApp(QWidget):
         row2.addWidget(self.amount)
         row2.addWidget(QLabel("Description"))
         row2.addWidget(self.description)
-        row2.addWidget(self.btn_add)
+
+        row3.addWidget(self.btn_add)
         row3.addWidget(self.btn_delete)
+
 
         master.addLayout(row1)
         master.addLayout(row2)
@@ -77,9 +80,6 @@ class ExpenseApp(QWidget):
 
         self.setLayout(master)
 
-
-
-        # Row 3
 
 
     def apply_styles(self):
@@ -128,6 +128,7 @@ class ExpenseApp(QWidget):
                                 background-color: #4caf50;
                                 color: white;
                                 padding: 10px 15px;
+                                border-radius: 5px; /* Rounded corners for the button */
                                 font-size: 14px;
                                 font-weight: bold;
                                 transition: background-color 0.3s;
@@ -140,7 +141,7 @@ class ExpenseApp(QWidget):
                                 background-color: #3d8b40; /* Darker shade when pressed */
                            }
 
-                           QPushButtion:disabled {
+                           QPushButton:disabled {
                                 background-color: #c8c8c8
                                 color: #6e6e6e; /* Gray out the button when disabled */
                            }
