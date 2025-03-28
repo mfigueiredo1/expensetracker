@@ -45,7 +45,7 @@ class ExpenseApp(QWidget):
         self.btn_add.clicked.connect(self.add_expense)
         self.btn_delete.clicked.connect(self.delete_expense)
 
-        # edit table width
+        self.apply_styles() # Apply styles to the widgets
 
         # Add widgets to a Layout (Row/Column)
         self.setup_layout()
@@ -81,6 +81,83 @@ class ExpenseApp(QWidget):
 
         # Row 3
 
+
+    def apply_styles(self):
+        self.setStyleSheet("""
+                           QWidget {
+                                 background-color: #e3e9f2;
+                                 font-family: Arial, sans-serif;
+                                 font-size: 14px;
+                                 color: #333;
+                            }
+                           
+                            QLabel{
+                                font-size: 16px;
+                                color: #2c3e50;
+                                font-weight: bold;
+                                padding: 5px;
+                           }
+
+                           QLineEdit, QComboBox, QDateEdit {
+                                background-color: #fff;
+                                font-size: 14px;
+                                color: #333;
+                                border: 1px solid #b0bfc6;
+                                border-radius: 15px;
+                                padding: 5px;
+                           }
+
+                           QLineEdit:hover, QComboBox:hover, QDateEdit:hover {
+                                border: 1px solid #4caf50;
+                           }
+                           QLineEdit:focus, QComboBox:focus, QDateEdit:focus {
+                                border: 1px solid #2a9d8f; /* Change border color when focused */
+                                background-color: #f5f9fc; /* Change background color when focused */
+                           }
+                           QTableWidget {
+                                background-color: #fff;
+                                alternate-background-color: #f2f7fb; 
+                                gridline-color: #c0c9d0;
+                                selection-background-color: #4caf50;
+                                selection-color: white;    
+                                font-size: 14px;
+                                border: 1px solid #cfd9e1;
+                           }
+
+                           QpushButton {
+                                background-color: #4caf50;
+                                color: white;
+                                padding: 10px 15px;
+                                font-size: 14px;
+                                font-weight: bold;
+                                transition: background-color 0.3s;
+                            }
+                            QPushButton:hover {
+                                background-color: #45a049;
+                            }
+                           
+                           QPushButton:pressed {
+                                background-color: #3d8b40; /* Darker shade when pressed */
+                           }
+
+                           QPushButtion:disabled {
+                                background-color: #c8c8c8
+                                color: #6e6e6e; /* Gray out the button when disabled */
+                           }
+
+                           /* Tooltip styling */
+                           QToolTip {
+                                background-color: #2c3e50; /* Dark background for the tooltip */
+                           
+                                color: #ffffff;
+                                border: 1px solid #333;
+                                padding: 5px;
+                                font-size: 12px;
+                           }
+
+                           
+
+                           """)
 
     def populate_dropdown(self):
         categories = ["Groceries","Eating out", "Rent", "Utilities", "Transportation", "Terra Schools", 
