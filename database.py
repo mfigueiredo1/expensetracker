@@ -22,7 +22,7 @@ def init_db(db_name):
             amount REAL,
             description TEXT
         )
-    """)
+        """)
 
     return True
         
@@ -36,7 +36,7 @@ def fetch_expenses():
         expenses.append(row)
     return expenses
 
-def add_expense(date, category, amount, description):
+def add_expenses(date, category, amount, description):
     query = QSqlQuery()
     query.prepare("""
                 INSERT INTO expenses (date, category, amount, description)
@@ -50,6 +50,8 @@ def add_expense(date, category, amount, description):
 
     return query.exec()
 
-def delete_expense(expense_id):
+def delete_expenses(expense_id):
     query = QSqlQuery()
     query.prepare("DELETE FROM expenses WHERE id = ?")
+    query.addBindValue(expense_id)
+    return query.exec()

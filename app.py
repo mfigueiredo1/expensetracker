@@ -2,13 +2,13 @@
 #Written By: Michael Figueiredo
 #Date Created: 03/10/2025
 #Project: Expense Tracker App
-#Last Updated: 03/11/2025
+#Last Updated: 03/28/2025
 
 # App Design
 from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit, QComboBox, QDateEdit, QTableWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QTableWidgetItem, QHeaderView
 
 from PyQt6.QtCore import QDate, Qt
-from database import fetch_expenses, add_expense, delete_expense
+from database import fetch_expenses, add_expenses, delete_expenses
 
 
 class ExpenseApp(QWidget):
@@ -113,7 +113,7 @@ class ExpenseApp(QWidget):
             QMessageBox.warning(self, "Input Error", "Amount and Description cannot be empty")
             return
         
-        if add_expense(date, category, amount, description):
+        if add_expenses(date, category, amount, description):
             self.load_table_data()
             # Clear inputs
             self.clear_inputs()
@@ -124,13 +124,12 @@ class ExpenseApp(QWidget):
     def delete_expense(self):
         selected_row = self.table.currentRow()
         if selected_row == -1:
-            QMessageBox.warning(self, "Uh oh", "You need to select a row to delete")
+            QMessageBox.warning(self, "Uh oh", "You need to select a row to delete.")
             return
 
         expense_id = int(self.table.item(selected_row, 0).text())
-        confirm = QMessageBox.question(self, "Confirm",
-         "Are you sure you want to delete?", QMessageBox.StandardButton.Yes | QMessageBox.
-         StandardButton.No)
+        confirm = QMessageBox.question(self, "Confirm", "Are you sure you want to delete?", 
+        QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
 
-        if confirm == QMessageBox.StandardButton.Yes and delete_expense(expense_id):
+        if confirm == QMessageBox.StandardButton.Yes and delete_expenses(expense_id):
             self.load_table_data()
