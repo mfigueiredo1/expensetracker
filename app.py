@@ -161,8 +161,8 @@ class ExpenseApp(QWidget):
                            """)
 
     def populate_dropdown(self):
-        categories = ["Groceries","Eating out", "Rent", "Utilities", "Transportation", "Terra Schools", 
-        "Violin", "Clarinet", "Bata", "Bob Mover Lessons", "Gas", "Miscellaneous"]
+        categories = ["Groceries", "Dining Out", "Rent", "Utilities", "Transportation", "Bills","Rent", "Entertainment", "Clothing", "Personal Care",
+          "Miscellaneous"]
         self.dropdown.addItems(categories)
 
     def load_table_data(self):
