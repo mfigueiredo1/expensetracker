@@ -3,12 +3,21 @@
 #Date Created: 03/10/2025
 #Project: Expense Tracker App
 #Last Updated: 03/11/2025
+import sys
+import os
 from PyQt6.QtSql import QSqlDatabase, QSqlQuery
 
 def init_db(db_name):
+    # get the correct database path
+    if getattr(sys, 'frozen', False):
+        # IF the app is running as a frozen executable (e.g, bundeled with PyInstaller)
+        db_path = os.path.join(os.path.dirname(sys.executable), 'expenses.db')
+    else:
+        # If running in a development environment (e.g., directly from the source code)
+        db_path = os.path.join(os.path.dirname(__file__), 'expenses.db')
 
     database = QSqlDatabase.addDatabase("QSQLITE")
-    database.setDatabaseName(db_name)
+    database.setDatabaseName(db_path)
     
     if not database.open():
         return False

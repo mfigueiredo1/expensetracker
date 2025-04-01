@@ -2,7 +2,7 @@
 #Written By: Michael Figueiredo
 #Date Created: 03/10/2025
 #Project: Expense Tracker App
-#Last Updated: 03/28/2025
+#Last Updated: 03/31/2025
 
 # App Design
 from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit, QComboBox, QDateEdit, QTableWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QTableWidgetItem, QHeaderView
@@ -33,6 +33,7 @@ class ExpenseApp(QWidget):
 
         self.btn_add = QPushButton("Add Expense")
         self.btn_delete = QPushButton("Delete Expense")
+        self.btn_delete.setObjectName("btn_delete") # For styling purposes
 
         self.table = QTableWidget(0, 5)
         self.table.setHorizontalHeaderLabels(["ID", "Date", "Category",
@@ -112,7 +113,7 @@ class ExpenseApp(QWidget):
                            }
                            QLineEdit:focus, QComboBox:focus, QDateEdit:focus {
                                 border: 1px solid #2a9d8f; /* Change border color when focused */
-                                background-color: #f5f9fc; /* Change background color when focused */
+                                  background-color: #f5f9fc; /* Change background color when focused */
                            }
                            QTableWidget {
                                 background-color: #fff;
@@ -139,6 +140,23 @@ class ExpenseApp(QWidget):
                            
                            QPushButton:pressed {
                                 background-color: #3d8b40; /* Darker shade when pressed */
+                           }
+
+                           #btn_delete {
+                                background-color: #ff302e; /* Red color for delete button */
+                                color: white;
+                                padding: 10px 15px;
+                                border-radius: 5px; /* Rounded corners for the button */
+                                font-size: 14px;
+                                font-weight: bold;
+                                transition: background-color 0.3s;
+                            }
+                            #btn_delete:hover {
+                                background-color: #ff108e; /* Red color for delete button */
+                            }
+                           
+                           #btn_delete:pressed {
+                                background-color: #ff302e; /* Red color for delete button */
                            }
 
                            QPushButton:disabled {
